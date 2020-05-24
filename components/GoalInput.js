@@ -1,18 +1,27 @@
-import React from 'react';
+import React,{useState} from 'react';
 import {View, TextInput, StyleSheet, Button} from 'react-native';
 
 
 
 const GoalInput = props =>{
+    const [enteredGoal, setEnteredGoal] = useState('');
+    const goalInputHandler = (enteredText) => {
+        setEnteredGoal(enteredText);
+      };
+    
     return (
         <View style={goalInputStyle.inputContainer}>
         <TextInput
           placeholder='add new goal'
           style={goalInputStyle.input}
-          onChangeText={props.goalInputHandler}
-          value={props.enteredGoal}
+          onChangeText={goalInputHandler}
+          value={enteredGoal}
         />
-        <Button title="Add" onPress={props.addGoalHandler} />
+        {/* 
+        use arrow function or use bind function
+        <Button title="Add" onPress={()=>
+            props.onAddGoal(enteredGoal)} /> */}
+            <Button title="Add" on onPress={props.onAddGoal.bind(this,enteredGoal)}/>
       </View>
     );
 };
