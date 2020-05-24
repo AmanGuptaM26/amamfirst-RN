@@ -20,4 +20,7 @@ const goalItemStyle = StyleSheet.create({
         borderWidth: 1
       }
 });
+
+
+
 export default GoalItem;
