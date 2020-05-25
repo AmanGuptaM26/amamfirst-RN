@@ -13,6 +13,11 @@ export default function App() {
 
   const addGoalHandler = (goalTitle) => {
     // console.log(enteredGoal);
+
+    if(goalTitle.length===0)
+    {
+      return;
+    }
     setCourseGoals(currentGoals =>
       [...currentGoals,
       { id: Math.random().toString(), value: goalTitle }
