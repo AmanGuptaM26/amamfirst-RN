@@ -8,7 +8,10 @@ const GoalInput = props =>{
     const goalInputHandler = (enteredText) => {
         setEnteredGoal(enteredText);
       };
-    
+    const addGoalHandler =() =>{
+          props.onAddGoal(enteredGoal);
+          setEnteredGoal('');
+    };
     return (
         <Modal visible={props.visible} animationType="slide">
         <View style={goalInputStyle.inputContainer}>
@@ -22,7 +25,10 @@ const GoalInput = props =>{
         use arrow function or use bind function
         <Button title="Add" onPress={()=>
             props.onAddGoal(enteredGoal)} /> */}
-            <Button title="Add" on onPress={props.onAddGoal.bind(this,enteredGoal)}/>
+            <View style={goalInputStyle.buttonViewStyles}>
+            <Button title="Add" onPress={addGoalHandler} style={goalInputStyle.addButtonStyles}/>
+            <Button title="Cancel" color="red" onPress={props.onCancel}/>
+            </View>
       </View>
       </Modal>
     );
@@ -43,6 +49,15 @@ const goalInputStyle = StyleSheet.create({
         alignItems: 'center',
         flex:1,
         justifyContent:'center'
+      },
+      buttonViewStyles :{
+          flexDirection:"row",
+          margin:10
+      },
+      addButtonStyles:{
+          //this style is not applyin on button
+          padding:5,
+          marginBottom:100
       }
 });
 
